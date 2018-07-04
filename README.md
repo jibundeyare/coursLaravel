@@ -4,7 +4,7 @@ Je vais vous présentez le meilleur framework PHP de TOUS LES TEMPS !!!!!!!
 
 ## Présentation de l'architecture MVC
 
-![Schéma de l'architecture MVC](resources/assets/img/laravel*mvc*schema.png)
+![Schéma de l'architecture MVC](resources/assets/img/laravel-mvc-schema.png)
 
 * L'internaute transmet une requête en se dirigeant sur le site.
 * Les routes permettent d'appeler un contrôleur.
