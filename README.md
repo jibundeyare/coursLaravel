@@ -20,7 +20,18 @@ Laravel est un framework web open-source écrit en PHP respectant le principe de
 *Pour plus d'infos :*
 
 [Wikipédia FR](https://fr.wikipedia.org/wiki/Laravel)
+
 [Wikipédia EN](https://en.wikipedia.org/wiki/Laravel)
 
+## Installation de Laravel
 
+A récupérer sur le document word...
 
+## LE TP LARAVEL !!! ON VA ENFIN S'AMUSER ! :smiley:
+
+*Vous dormiez ? :sleeping:*
+*Si c'est le cas vous pouvez vous réveillez !*
+
+Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
+
+![Accueil de Laravel une fois l'installation terminée](resources/assets/img/laravel-mvc-schema.png)
