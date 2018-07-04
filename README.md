@@ -34,4 +34,4 @@ A récupérer sur le document word...
 
 Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
 
-![Installation terminée](resources/assets/img/laravel-accueil.png)
+![Installation terminée](resources/assets/img/laravel-accueil-resize.png)
