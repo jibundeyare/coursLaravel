@@ -2,6 +2,14 @@
 
 Je vais vous présentez le meilleur framework PHP de TOUS LES TEMPS !!!!!!!
 
+## Présentation générale
+
+Document word...
+
+## Installation de Laravel
+
+Document word...
+
 ## Présentation de l'architecture MVC
 
 ![Schéma de l'architecture MVC](resources/assets/img/laravel-mvc-schema.png)
@@ -35,3 +43,5 @@ A récupérer sur le document word...
 Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
 
 ![Installation terminée](resources/assets/img/laravel-accueil.png)
+
+### Les routers
