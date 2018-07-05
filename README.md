@@ -64,7 +64,12 @@ Si on essaye d'accéder à l'adresse `http://127.0.0.1:8000/test`
 On a une erreur car le contrôleur n'existe pas encore.
 On và donc le créer avec une ligne de commande.
 
+### Le contrôleur
+
+On và écrire cette ligne afin de générer automatiquement le contrôleur.
 `php artisan make:controller monController`
+
+*Note : `monController` est le nom du controller, vous pouvez l'appeler comme vous le souhaitez*
 
 Les contrôleurs sont créer dans `app` -> `Http` -> `Controllers`
 
