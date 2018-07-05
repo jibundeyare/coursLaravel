@@ -44,4 +44,4 @@ Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous 
 
 ![Installation terminée](resources/assets/img/laravel-accueil.png)
 
-### Les routers
+### Les routes
