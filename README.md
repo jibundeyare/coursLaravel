@@ -12,7 +12,7 @@ Document word...
 
 ## Présentation de l'architecture MVC
 
-![Schéma de l'architecture MVC](resources/assets/img/mvc-schema.png)
+![Schéma de l'architecture MVC](tpCours/resources/assets/img/mvc-schema.png)
 
 1. L'internaute transmet une requête en se dirigeant sur le site.
 1. La route permet d'appeler un contrôleur.
@@ -42,9 +42,9 @@ A récupérer sur le document word...
 
 Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
 
-![Installation terminée](resources/assets/img/laravel-accueil.png)
+![Installation terminée](tpCours/resources/assets/img/laravel-accueil.png)
 
 ### Les routes
 
 
-![Le dossier routes](resources/assets/img/routes-folder.png)
+![Le dossier routes](tpCours/resources/assets/img/routes-folder.png)
