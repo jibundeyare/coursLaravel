@@ -76,3 +76,24 @@ Les contrôleurs sont créer dans `app` -> `Http` -> `Controllers`
 ![Le dossier des contrôleurs](tpCours/resources/assets/img/controller-folder.png)
 
 On a bien nôtre nouveau contrôleur **monController.php** dans le dossier `Controllers`
+
+On và maintenant créer la fonction accueil dans le contrôleur qui affichera `Hello World !` juste pour vérifier que le contrôleur fonctionne correctement.
+
+```php
+public function accueil()
+{
+    echo 'Hello World !';
+}
+```
+### La vue
+
+Pour respecter l'architecture MVC, le contrôleur appel une vue. Nous allons créer une vue puis l'appeler dans le contrôleur.
+
+On và remplacer `echo 'Hello World !';` par `return view('hello')';`
+
+```php
+public function accueil()
+    {
+        return view('hello');
+    }
+```
