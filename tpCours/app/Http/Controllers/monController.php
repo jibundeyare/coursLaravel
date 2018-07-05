@@ -8,6 +8,6 @@ class monController extends Controller
 {
     public function accueil()
     {
-        echo 'Hello World !';
+        return view('hello');
     }
 }
