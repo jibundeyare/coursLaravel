@@ -46,5 +46,15 @@ Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous 
 
 ### Les routes
 
+Dirigez-vous dans le dossier des **routes**
 
 ![Le dossier routes](tpCours/resources/assets/img/routes-folder.png)
+
+Ouvrez le fichier route **web.php**
+
+Ecrivez la ligne
+
+```php
+Route::get('/test', 'monController@accueil');
+```
+Que fait cette ligne ? Elle và appeler le contrôleur **monController** et la function **accueil**
