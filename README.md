@@ -46,15 +46,28 @@ Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous 
 
 ### Les routes
 
-Dirigez-vous dans le dossier des **routes**
+On se dirige dans le dossier des **routes**
 
 ![Le dossier routes](tpCours/resources/assets/img/routes-folder.png)
 
-Ouvrez le fichier route **web.php**
+On ouvre le fichier route **web.php**
 
 Ecrivez la ligne
 
 ```php
 Route::get('/test', 'monController@accueil');
 ```
-Que fait cette ligne ? Elle và appeler le contrôleur **monController** et la function **accueil**
+Que fait cette ligne ? Elle và appeler le contrôleur **monController** et la function **accueil** de ce contrôleur.
+
+Si on essaye d'accéder à l'adresse `http://127.0.0.1:8000/test`
+
+On a une erreur car le contrôleur n'existe pas encore.
+On và donc le créer avec une ligne de commande.
+
+`php artisan make:controller monController`
+
+Les contrôleurs sont créer dans `app` -> `Http` -> `Controllers`
+
+![Le dossier des contrôleurs](tpCours/resources/assets/img/controller-folder.png)
+
+On a bien nôtre nouveau contrôleur **monController.php** dans le dossier `controllers`
