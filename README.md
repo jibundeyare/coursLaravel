@@ -36,7 +36,7 @@ Laravel est un framework web open-source écrit en PHP respectant le principe de
 *Vous dormiez ? :sleeping:*
 *Si c'est le cas vous pouvez vous réveillez !*
 
-### Installation de Laravel
+### Installation de Laravel
 
 A récupérer sur le document word...
 
