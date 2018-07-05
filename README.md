@@ -93,7 +93,7 @@ On và remplacer `echo 'Hello World !';` par `return view('hello')';`
 
 ```php
 public function accueil()
-    {
-        return view('hello');
-    }
+{
+    return view('hello');
+}
 ```
