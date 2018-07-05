@@ -70,4 +70,4 @@ Les contrôleurs sont créer dans `app` -> `Http` -> `Controllers`
 
 ![Le dossier des contrôleurs](tpCours/resources/assets/img/controller-folder.png)
 
-On a bien nôtre nouveau contrôleur **monController.php** dans le dossier `controllers`
+On a bien nôtre nouveau contrôleur **monController.php** dans le dossier `Controllers`
