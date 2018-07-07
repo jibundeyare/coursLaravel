@@ -69,7 +69,7 @@ On và donc le créer avec une ligne de commande.
 On và écrire cette ligne afin de générer automatiquement le contrôleur.
 `php artisan make:controller monController`
 
-*Note : `monController` est le nom du controller, vous pouvez l'appeler comme vous le souhaitez*
+*Note : `monController` est le nom du controller, vous pouvez l'appeler comme vous le souhaitez.*
 
 Les contrôleurs sont créer dans `app` -> `Http` -> `Controllers`
 
@@ -93,7 +93,17 @@ On và remplacer `echo 'Hello World !';` par `return view('hello')';`
 
 ```php
 public function accueil()
-    {
-        return view('hello');
-    }
+{
+    return view('hello');
+}
 ```
+
+### Le modèle
+
+Pour créer notre modèle qui và se charger de récupérer des données.
+
+On và donc écrire dans notre terminal :
+
+`php artisan make:model monModel`
+
+*Note : `monModel` est le nom du modèle, vous pouvez l'appeler comme vous le souhaitez.*
