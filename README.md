@@ -107,3 +107,4 @@ On và donc écrire dans notre terminal :
 `php artisan make:model monModel`
 
 *Note : `monModel` est le nom du modèle, vous pouvez l'appeler comme vous le souhaitez.*
+
