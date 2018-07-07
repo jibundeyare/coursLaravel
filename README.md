@@ -44,6 +44,54 @@ Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous 
 
 ![Installation terminée](tpCours/resources/assets/img/laravel-accueil.png)
 
+### La base de données
+
+#### Créer la base de données
+
+Il faut se rendre sur phpMyAdmin et créer sa base de données.
+(où le faire en ligne de commande si vous préférez. :smirk:)
+
+Donnez lui le nom que vous voulez, moi je vais l'appeler "cours-laravel".
+
+#### Le fichier de configuration
+
+Pour que **Laravel** sache qu'elle base de données vous souhaitez utiliser et qu'il puisse s'y connecter, il faut ouvrir le fichier de configuration .env et le paramétrer.
+
+Ce fichier se trouve à la racine du projet.
+
+*Note: Le fichier ".env" est probablement un fichier caché.*
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cours-laravel
+DB_USERNAME=root
+DB_PASSWORD=Test08
+```
+Le champ DB_DATABASE correspond au nom de votre base de données.
+Le champ DB_USERNAME correspond à votre identifiant.
+Le champ DB_PASSWORD correspond à votre mot de passe.
+
+#### Les migrations
+
+Nous allons maintenant créer une migration avec cette ligne de commande :
+
+`php artisan make:migration create_student_table`
+
+*Note : `create_student_table` est le nom de ma migration, vous pouvez l'appeler comme vous le souhaitez.*
+
+Une fois la migration créer, on và l'ouvrir dans le dossier **database** puis dans le dossier **migrations**
+
+**à compléter...**
+
+Vérifier nos migrations :
+
+`php artisan migrate:status`
+
+Effectuer la migration :
+
+`php artisan migrate`
 ### Les routes
 
 On se dirige dans le dossier des **routes**
@@ -107,3 +155,6 @@ On và donc écrire dans notre terminal :
 `php artisan make:model monModel`
 
 *Note : `monModel` est le nom du modèle, vous pouvez l'appeler comme vous le souhaitez.*
+
+![Le dossier des modèles](tpCours/resources/assets/img/model-folder.png)
+
