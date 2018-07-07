@@ -36,7 +36,7 @@ Laravel est un framework web open-source écrit en PHP respectant le principe de
 *Vous dormiez ? :sleeping:*
 *Si c'est le cas vous pouvez vous réveillez !*
 
-### Installation de Laravel
+### Installation de Laravel
 
 A récupérer sur le document word...
 
@@ -107,4 +107,3 @@ On và donc écrire dans notre terminal :
 `php artisan make:model monModel`
 
 *Note : `monModel` est le nom du modèle, vous pouvez l'appeler comme vous le souhaitez.*
-
