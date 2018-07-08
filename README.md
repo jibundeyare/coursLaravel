@@ -194,7 +194,7 @@ On và ensuite modifier cette vue et y écrire un petit peu de HTML.
 ```
 
 On peut tester à nouveau :
-[Adresse localhost](http://localhost:8000)
+http://localhost:8000
 
 On a bien le message "Hello World !" d'afficher via la vue.
 
@@ -237,9 +237,10 @@ use Illuminate\Http\Request;
 ```php
 use App\Student;
 ```
-Qui và nous éviter de tomber sur une erreur php...
+Qui và nous éviter de tomber sur une erreur php de type **FatalThrowableError** *Class 'App\Http\Controllers\App\Student' not found...*
+Pourquoi `use App\Student;` permet d'éviter cette erreur ? Parce que use donne un chemin absolu et donc à partir de la racine du projet on retourne dans *App\Student*.
 
-On và également ajouter une function ajout() qui và permettre d'afficher la page d'ajout des étudiants.
+On và également ajouter une fonction ajout() qui và permettre d'afficher la page d'ajout des étudiants :
 
 ```php
 <?php
@@ -255,6 +256,44 @@ class StudentsController extends Controller
         return view('ajoutStudent');
     }
 ```
+
+#### Création d'une vue ajoutStudent
+
+Maintenant on và devoir créer la vue **ajoutStudent** qui contiendra un formulaire afin d'ajouter un étudiant dans la base de données.
+
+```php
+@extends('layout')
+
+@section('contenu')
+
+    <h1>Ajouter un étudiant ici :</h1>
+    <form action="/students" method="post">
+        {{ csrf_field() }}
+
+        <input type="text" name="firstname" placeholder="Nom">
+        <input type="text" name="lastname" placeholder="Prénom">
+        <input type="submit" value="Ajout d'un étudiant">
+    </form>
+@endsection
+```
+
+`{{ csrf_field() }}` est une sécuritée Laravel a ajouter dans nos formulaire.
+
+*Note : csrf pour cross-site request forgery*
+[Plus d'infos sur Wikipédia EN](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
+[Plus d'infos sur Wikipédia FR](https://fr.wikipedia.org/wiki/Cross-site_request_forgery)
+
+#### Modification du modèle Student
+
+Dans notre class Student, on và ajouter une ligne :
+
+```php
+class Student extends Model
+{
+    protected $fillable = ['firstname', 'lastname'];
+}
+```
+Cette ligne permet de dire à Laravel "Les champs firstname et lastname sont autorisés".
 
 ### Afficher des étudiants dans la BDD
 
@@ -287,6 +326,7 @@ public function afficher()
     ]);
 }
 ```
+
 #### Ajout d'une nouvelle vue et d'un layout
 
 ##### Le fichier layout.blade.php
@@ -343,14 +383,3 @@ Ensuite dans `@section('contenu')` on a notre contenu qui est affiché.
 
 
 
-##### Modification du modèle Student
-
-Dans notre class Student, on và ajouter une ligne :
-
-```php
-class Student extends Model
-{
-    protected $fillable = ['firstname', 'lastname'];
-}
-
-```
