@@ -1,6 +1,6 @@
 # Cours Laravel
 
-Je vais vous présenter le Framework **Laravel**, l'un des framework les plus utilisés sur le marché.
+Je vais vous présenter le framework **Laravel**, l'un des framework les plus utilisés sur le marché.
 
 ## Présentation de l'architecture MVC
 
