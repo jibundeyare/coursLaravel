@@ -283,6 +283,13 @@ Maintenant on và devoir créer la vue **ajoutStudent** qui contiendra un formul
 [Plus d'infos sur Wikipédia EN](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
 [Plus d'infos sur Wikipédia FR](https://fr.wikipedia.org/wiki/Cross-site_request_forgery)
 
+#### Ajout d'une nouvelle route
+
+On và ajouter une nouvelle route qui và nous permettre d'utiliser une méthode POST pour le contrôleur afin de traiter les données envoyés via le formulaire.
+
+```php
+Route::post('/students', 'StudentsController@traitementAjout');
+```
 #### Modification du modèle Student
 
 Dans notre class Student, on và ajouter une ligne :
@@ -297,6 +304,106 @@ Cette ligne permet de dire à Laravel "Les champs firstname et lastname sont aut
 
 On peut tester :smiley: http://localhost:8000/add-student
 Normalement tout devrait fonctionner :relieved: !
+
+#### Amélioration du formulaire
+
+Tout fonctionne cependant, l'utilisateur và tomber sur une erreur si il n'entre pas de nom et de prénom.
+On và donc améliorer notre formulaire. Pour se faire, on và se rendre dans **StudentsController.php** puis dans la fonction traitementAjout() on và ajouter :
+```php
+    public function traitementAjout()
+    {
+        request()->validate([
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+        ]);
+```
+
+On a donc maintenant :
+```php
+    public function traitementAjout()
+    {
+        request()->validate([
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+        ]);
+        
+        $student = Student::create([
+            'firstname' => request('firstname'),
+            'lastname' => request('lastname'),
+        ]);
+    
+        return redirect('students');
+    }
+```
+Désormais il n'est plus possible de valider le formulaire sans remplir de champs. Cependant nous n'avons pas de message qui s'affiche, on và donc modifier ça dans la vue **ajoutStudent.blade.php** en ajoutant une condition blade.
+
+*Note : Laravel nous fournis par défaut une variable $errors dans toute nos vues qui contient les erreurs si il y en a.*
+
+On và ajouter sous le premier input :
+```php
+@if($errors->has('firstname'))
+    <p>{{ $errors->first('firstname') }}</p>
+@endif
+```
+puis on fait la même chose pour le deuxième champs :
+```php
+@if($errors->has('lastname'))
+    <p>{{ $errors->first('lastname') }}</p>
+@endif
+```
+
+On a donc une vue qui ressemble à ça :
+
+```php
+@extends('layout')
+
+@section('contenu')
+
+    <h1>Ajouter un étudiant ici :</h1>
+    <form action="/students" method="post">
+        {{ csrf_field() }}
+
+        <input type="text" name="firstname" placeholder="Nom">
+        @if($errors->has('firstname'))
+            <p>{{ $errors->first('firstname') }}</p>
+        @endif
+        <input type="text" name="lastname" placeholder="Prénom">
+        @if($errors->has('lastname'))
+            <p>{{ $errors->first('lastname') }}</p>
+        @endif
+        <input type="submit" value="Ajout d'un étudiant">
+    </form>
+@endsection
+```
+
+Maintenant si on essaye à nouveau d'entrer un étudiant, on a bien un message d'erreur pour le champs concerné.
+
+On và également ajouter `value="{{ old('firstname') }}` et `value="{{ old('lastname') }}` aux deux input afin de conserver la dernière valeur entrer si on a une erreur (cela évite à l'utilisateur de tout retaper ce qui serait une mauvaise pratique). 
+
+Notre vue ressemble donc à cela maintenant :
+
+```php
+@extends('layout')
+
+@section('contenu')
+
+    <h1>Ajouter un étudiant ici :</h1>
+    <form action="/students" method="post">
+        {{ csrf_field() }}
+
+        <input type="text" name="firstname" placeholder="Nom">
+        @if($errors->has('firstname'))
+            <p>{{ $errors->first('firstname') }}</p>
+        @endif
+        <input type="text" name="lastname" placeholder="Prénom">
+        @if($errors->has('lastname'))
+            <p>{{ $errors->first('lastname') }}</p>
+        @endif
+        <input type="submit" value="Ajout d'un étudiant">
+    </form>
+    <a href="/students">Afficher la liste des étudiants</a>
+@endsection
+```
 
 ### Afficher des étudiants dans la BDD
 

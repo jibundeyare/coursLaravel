@@ -11,6 +11,21 @@ class StudentsController extends Controller
         return view('ajoutStudent');
     }
 
+    public function traitementAjout()
+    {
+        request()->validate([
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+        ]);
+        
+        $student = Student::create([
+            'firstname' => request('firstname'),
+            'lastname' => request('lastname'),
+        ]);
+    
+        return redirect('students');
+    }
+
     public function afficher()
     {
         $students = Student::all();
@@ -21,13 +36,4 @@ class StudentsController extends Controller
         return view('ajoutStudent');
     }
 
-    public function traitementAjout()
-    {
-        $student = Student::create([
-            'firstname' => request('firstname'),
-            'lastname' => request('lastname'),
-        ]);
-    
-        return redirect('students');
-    }
 }
