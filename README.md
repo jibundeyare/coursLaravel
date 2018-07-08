@@ -36,7 +36,7 @@ Laravel est un framework web open-source écrit en PHP respectant le principe de
 *Vous dormiez ? :sleeping:*
 *Si c'est le cas vous pouvez vous réveillez !*
 
-### Installation de Laravel
+### Installation de Laravel
 
 A récupérer sur le document word...
 
@@ -77,21 +77,50 @@ Le champ DB_PASSWORD correspond à votre mot de passe.
 
 Nous allons maintenant créer une migration avec cette ligne de commande :
 
-`php artisan make:migration create_student_table`
+`php artisan make:migration create_students_table`
 
-*Note : `create_student_table` est le nom de ma migration, vous pouvez l'appeler comme vous le souhaitez.*
+*Note : `create_students_table` est le nom de ma table de migration, vous pouvez l'appeler comme vous le souhaitez.*
 
 Une fois la migration créer, on và l'ouvrir dans le dossier **database** puis dans le dossier **migrations**
 
-**à compléter...**
+![Le dossier des migrations](tpCours/resources/assets/img/migrations-folder.png)
 
-Vérifier nos migrations :
+Dans notre migration, on une une fonction "up" :
+
+```php
+    public function up()
+    {
+        Schema::create('students', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+        });
+    }
+```
+
+Il faut rajouter deux champs un champ *firstname* et un champ *lastname* comme ceci :
+
+```php
+    public function up()
+    {
+        Schema::create('students', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->timestamps();
+        });
+    }
+```
+
+On peut vérifier les status de nos migrations pour avoir une idée des migrations que l'on a déjà effectuée ou non :
 
 `php artisan migrate:status`
 
-Effectuer la migration :
+Maintenant, pour pouvoir effectuer la migration on và taper cette ligne de commande :
 
 `php artisan migrate`
+
+Si on refait ici la commande `php artisan migrate:status` on voit bien que maintenant la migration a était effectuée (si il n'y a pas eu d'erreur lors de la commande précédente bien évidemment).
+
 ### Les routes
 
 On se dirige dans le dossier des **routes**
@@ -135,7 +164,7 @@ public function accueil()
 ```
 ### La vue
 
-Pour respecter l'architecture MVC, le contrôleur appel une vue. Nous allons créer une vue puis l'appeler dans le contrôleur.
+Pour respecter l'architecture MVC, le contrôleur appel une vue. Nous allons créer une vue puis l'appeler via le contrôleur.
 
 On và remplacer `echo 'Hello World !';` par `return view('hello')';`
 
@@ -152,9 +181,26 @@ Pour créer notre modèle qui và se charger de récupérer des données.
 
 On và donc écrire dans notre terminal :
 
-`php artisan make:model monModel`
+`php artisan make:model Student`
 
-*Note : `monModel` est le nom du modèle, vous pouvez l'appeler comme vous le souhaitez.*
+*Note : `Student` est le nom du modèle, vous pouvez l'appeler comme vous le souhaitez.*
 
 ![Le dossier des modèles](tpCours/resources/assets/img/model-folder.png)
 
+### Insérer des étudiants dans la BDD
+
+Nous allons maintenant Insérer des étudiants dans la base de données.
+
+#### Modification du fichier route web.php
+
+Pour se faire, on và se rendre à nouveau dans le fichier route **web.php** (dans le dossier routes).
+
+Puis on và créer une route qui appel un contrôleur comme ceci :
+
+```php
+Route::get('/students', 'StudentsController@voir');
+```
+
+#### Modification du contrôleur StudentsController
+
+On và maintenant de nouveau se rendre dans le contrôleur StudentsControlleur (fichier **StudentsController.php** dans *App/Http/Controllers*)

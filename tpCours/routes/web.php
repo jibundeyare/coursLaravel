@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\monController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +13,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'StudentsController@ajout');
+
+Route::get('/students', 'StudentsController@voir');
+
+Route::post('/students', function () {
+    $student = new App\Student;
+    $student = App\Student::create([
+        'firstname' => request('firstname'),
+        'lastname' => request('lastname'),
+    ]);
+
+    return 'prénom ' . request('firstname') . ' nom ' . request('lastname') . '.';
 });
 
-Route::get('/test', 'monController@accueil');
+//Route::post('/students', 'StudentsController@traitement');
+
+
+
+
+
+//Route::get('/show-students', 'monController@accueil');
+
+//Route::post('/add-student', 'monController@nouveau');
