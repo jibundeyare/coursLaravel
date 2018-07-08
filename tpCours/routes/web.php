@@ -13,7 +13,7 @@ use App\Http\Controllers\monController;
 |
 */
 
-Route::get('/', 'StudentsController@ajout');
+Route::get('/', 'monController@accueil');
 
 Route::get('/students', 'StudentsController@voir');
 

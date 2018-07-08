@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Student;
 
 class monController extends Controller
-{/*
+{
     public function accueil()
     {
-        $students = App\Student::all();
         return view('hello');
     }
-
+/*
     public function nouveau()
     {
         $student = App\Student::create([

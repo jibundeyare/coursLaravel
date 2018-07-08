@@ -1,12 +1,8 @@
 # Cours Laravel
 
-Je vais vous présentez le meilleur framework PHP de TOUS LES TEMPS !!!!!!!
+Je vais vous présenter le Framework Laravel, l'un des framework les plus utilisés sur le marché.
 
 ## Présentation générale
-
-Document word...
-
-## Installation de Laravel
 
 Document word...
 
@@ -34,7 +30,7 @@ Laravel est un framework web open-source écrit en PHP respectant le principe de
 ## LE TP LARAVEL !!! ON VA ENFIN S'AMUSER ! :smiley:
 
 *Vous dormiez ? :sleeping:*
-*Si c'est le cas vous pouvez vous réveillez !*
+*Si c'est le cas vous pouvez vous réveiller !*
 
 ### Installation de Laravel
 
@@ -132,9 +128,9 @@ On ouvre le fichier route **web.php**
 Ecrivez la ligne
 
 ```php
-Route::get('/test', 'monController@accueil');
+Route::get('/', 'MonController@accueil');
 ```
-Que fait cette ligne ? Elle và appeler le contrôleur **monController** et la function **accueil** de ce contrôleur.
+Que fait cette ligne ? Elle và appeler le contrôleur **MonController** et la function **accueil** de ce contrôleur.
 
 Si on essaye d'accéder à l'adresse `http://127.0.0.1:8000/test`
 
@@ -144,9 +140,9 @@ On và donc le créer avec une ligne de commande.
 ### Le contrôleur
 
 On và écrire cette ligne afin de générer automatiquement le contrôleur.
-`php artisan make:controller monController`
+`php artisan make:controller MonController`
 
-*Note : `monController` est le nom du controller, vous pouvez l'appeler comme vous le souhaitez.*
+*Note : `MonController` est le nom du controller, vous pouvez l'appeler comme vous le souhaitez.*
 
 Les contrôleurs sont créer dans `app` -> `Http` -> `Controllers`
 
@@ -162,11 +158,11 @@ public function accueil()
     echo 'Hello World !';
 }
 ```
-### La vue
 
-Pour respecter l'architecture MVC, le contrôleur appel une vue. Nous allons créer une vue puis l'appeler via le contrôleur.
+Pour respecter l'architecture MVC, le contrôleur appel une vue. Nous allons donc appeler une vue depuis le contrôleur.
+La vue que l'on và appeler n'existe pas encore mais on và la créer juste après.
 
-On và remplacer `echo 'Hello World !';` par `return view('hello')';`
+On và remplacer `echo 'Hello World !';` par `return view('hello')';` dans notre fonction accueil du contrôleur **MonController**.
 
 ```php
 public function accueil()
@@ -174,6 +170,30 @@ public function accueil()
     return view('hello');
 }
 ```
+Ainsi on và retourner une la vue "Hello".
+
+### La vue
+
+Pour créer la vue, il faut se rendre dans *app/resources/views* puis créer un fichier *hello.blade.php*.
+
+On và ensuite modifier cette vue et y écrire un petit peu de HTML.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Accueil</title>
+    </head>
+    <body>
+        <p>Hello World !</p>
+    </body>
+</html>
+```
+
+Maintenant on a bien le message "Hello World !" d'afficher via la vue.
 
 ### Le modèle
 
@@ -204,3 +224,4 @@ Route::get('/students', 'StudentsController@voir');
 #### Modification du contrôleur StudentsController
 
 On và maintenant de nouveau se rendre dans le contrôleur StudentsControlleur (fichier **StudentsController.php** dans *App/Http/Controllers*)
+
