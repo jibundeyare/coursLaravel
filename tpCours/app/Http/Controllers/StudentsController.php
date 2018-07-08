@@ -8,28 +8,26 @@ class StudentsController extends Controller
 {
     public function ajout()
     {
-        return view('hello');
+        return view('ajoutStudent');
     }
 
     public function afficher()
     {
         $students = Student::all();
 
-
         return view('students', [
             'students' => $students
         ]);
+        return view('ajoutStudent');
     }
-/*
-    public function traitement()
+
+    public function traitementAjout()
     {
-        $student = new App\Student;
-        $student = App\Student::create([
+        $student = Student::create([
             'firstname' => request('firstname'),
             'lastname' => request('lastname'),
         ]);
     
-        return 'prénom ' . request('firstname') . ' nom ' . request('lastname') . '.';
+        return redirect('students');
     }
-*/
 }

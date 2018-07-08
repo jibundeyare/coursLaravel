@@ -63,7 +63,7 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=cours-laravel
 DB_USERNAME=root
-DB_PASSWORD=Test08
+DB_PASSWORD=motDePasse
 ```
 Le champ DB_DATABASE correspond au nom de votre base de données.
 Le champ DB_USERNAME correspond à votre identifiant.
@@ -210,6 +210,52 @@ On và écrire dans notre terminal :
 
 ![Le dossier des modèles](tpCours/resources/assets/img/model-folder.png)
 
+Maintenant qu'on a créer route, contrôleur et vue, on và pouvoir passer au CRUD !
+
+### Insérer des étudiants dans la BDD
+
+Nous allons insérer des étudiants dans la base de données.
+
+#### Modification du fichier route web.php
+
+Pour insérer des données, on và ajouter une route dans **web.php**
+
+```php
+Route::get('/add-student', 'StudentsController@ajout');
+```
+
+#### Création d'un contrôleur StudentsController
+
+On và maintenant créer un contrôleur **StudentsController** encore une fois avec la commande :
+`php artisan make:controller StudentsController`
+
+Dans ce contrôleur, on và remplacer la ligne
+```php
+use Illuminate\Http\Request;
+```
+(qui ne nous sert pas) par
+```php
+use App\Student;
+```
+Qui và nous éviter de tomber sur une erreur php...
+
+On và également ajouter une function ajout() qui và permettre d'afficher la page d'ajout des étudiants.
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Student;
+
+class StudentsController extends Controller
+{
+    public function ajout()
+    {
+        return view('ajoutStudent');
+    }
+```
+
 ### Afficher des étudiants dans la BDD
 
 Nous allons maintenant afficher les étudiants de la base de données.
@@ -289,6 +335,8 @@ Nous allons créer une vue **students.blade.php** qui và nous permettre d'affic
 
 Avec `@extends('layout')`, on a le fichier code HTML du fichier **layout.blade.php**. C'est un peu comme un `include();` en php.
 Ensuite dans `@section('contenu')` on a notre contenu qui est affiché.
+
+
 
 
 

@@ -26,6 +26,7 @@ Route::get('/students', function () {
     ]);
 });
 */
+/*
 Route::post('/students', function () {
     $student = new App\Student;
     $student = App\Student::create([
@@ -35,8 +36,9 @@ Route::post('/students', function () {
 
     return 'prénom ' . request('firstname') . ' nom ' . request('lastname') . '.';
 });
-
-//Route::post('/students', 'StudentsController@traitement');
+*/
+Route::get('/add-student', 'StudentsController@ajout');
+Route::post('/students', 'StudentsController@traitementAjout');
 
 
 
