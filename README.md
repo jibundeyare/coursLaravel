@@ -229,16 +229,18 @@ Route::get('/add-student', 'StudentsController@ajout');
 On và maintenant créer un contrôleur **StudentsController** encore une fois avec la commande :
 `php artisan make:controller StudentsController`
 
-Dans ce contrôleur, on và remplacer la ligne
+Dans ce contrôleur, on và remplacer la ligne (qui ne nous sert pas)
 ```php
 use Illuminate\Http\Request;
 ```
-(qui ne nous sert pas) par
+par
 ```php
 use App\Student;
 ```
 Qui và nous éviter de tomber sur une erreur php de type **FatalThrowableError** *Class 'App\Http\Controllers\App\Student' not found...*
-Pourquoi `use App\Student;` permet d'éviter cette erreur ? Parce que use donne un chemin absolu et donc à partir de la racine du projet on retourne dans *App\Student*.
+
+Pourquoi `use App\Student;` permet d'éviter cette erreur ?
+Parce que *use* donne un chemin absolu, donc à partir de la racine du projet on retourne dans *App\Student*.
 
 On và également ajouter une fonction ajout() qui và permettre d'afficher la page d'ajout des étudiants :
 
@@ -290,6 +292,22 @@ On và ajouter une nouvelle route qui và nous permettre d'utiliser une méthode
 ```php
 Route::post('/students', 'StudentsController@traitementAjout');
 ```
+
+#### Ajout d'une nouvelle fonction dans StudentsController
+
+Ajout d'une fonction traitementAjout() qui comme précisé précédemment permettra de traiter les données du formulaire.
+
+```php
+public function traitementAjout()
+    {
+        $student = Student::create([
+            'firstname' => request('firstname'),
+            'lastname' => request('lastname'),
+        ]);
+    
+        return 'Formulaire validé';
+    }
+```
 #### Modification du modèle Student
 
 Dans notre class Student, on và ajouter une ligne :
@@ -302,7 +320,7 @@ class Student extends Model
 ```
 Cette ligne permet de dire à Laravel "Les champs firstname et lastname sont autorisés".
 
-On peut tester :smiley: http://localhost:8000/add-student
+On peut tester :smiley: http://localhost:8000/add-student puis on vérifie dans la base de données.
 Normalement tout devrait fonctionner :relieved: !
 
 #### Amélioration du formulaire
@@ -332,9 +350,10 @@ On a donc maintenant :
             'lastname' => request('lastname'),
         ]);
     
-        return redirect('students');
+        return 'Formulaire validé';
     }
 ```
+
 Désormais il n'est plus possible de valider le formulaire sans remplir de champs. Cependant nous n'avons pas de message qui s'affiche, on và donc modifier ça dans la vue **ajoutStudent.blade.php** en ajoutant une condition blade.
 
 *Note : Laravel nous fournis par défaut une variable $errors dans toute nos vues qui contient les erreurs si il y en a.*
@@ -485,3 +504,11 @@ Nous allons créer une vue **students.blade.php** qui và nous permettre d'affic
 
 Avec `@extends('layout')`, on a le fichier code HTML du fichier **layout.blade.php**. C'est un peu comme un `include();` en php.
 Ensuite dans `@section('contenu')` on a notre contenu qui est affiché.
+
+#### Ajout d'une redirection sur le contrôleur StudentsController
+
+Maintenant qu'on a une page qui permet d'afficher les données de notre BDD, on và effectuer une redirection sur notre ancienne fonction de traitement de données afin d'avoir une redirection la page de notre liste d'étudiants lorsqu'on vient d'ajouter un étudiant.
+
+Pour se faire, il suffit simplement de modifier le `return 'Formulaire validé';` en `return redirect('students');`
+
+Prochainement... Mettre à jour des étudiants dans la BDD
