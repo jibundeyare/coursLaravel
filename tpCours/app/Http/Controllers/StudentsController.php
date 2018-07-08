@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Student;
 
 class StudentsController extends Controller
 {
@@ -11,9 +11,9 @@ class StudentsController extends Controller
         return view('hello');
     }
 
-    public function voir()
+    public function afficher()
     {
-        $students = App\Student::all();
+        $students = Student::all();
 
 
         return view('students', [

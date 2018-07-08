@@ -15,8 +15,17 @@ use App\Http\Controllers\monController;
 
 Route::get('/', 'monController@accueil');
 
-Route::get('/students', 'StudentsController@voir');
+Route::get('/students', 'StudentsController@afficher');
+/*
+Route::get('/students', function () {
+    $students = App\Student::all();
 
+
+    return view('students', [
+        'students' => $students
+    ]);
+});
+*/
 Route::post('/students', function () {
     $student = new App\Student;
     $student = App\Student::create([

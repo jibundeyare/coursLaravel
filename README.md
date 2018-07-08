@@ -81,7 +81,7 @@ Une fois la migration créer, on và l'ouvrir dans le dossier **database** puis 
 
 ![Le dossier des migrations](tpCours/resources/assets/img/migrations-folder.png)
 
-Dans notre migration, on une une fonction "up" :
+Dans notre migration, on a une une fonction "up" :
 
 ```php
     public function up()
@@ -193,13 +193,16 @@ On và ensuite modifier cette vue et y écrire un petit peu de HTML.
 </html>
 ```
 
-Maintenant on a bien le message "Hello World !" d'afficher via la vue.
+On peut tester à nouveau :
+[Adresse localhost](http://localhost:8000)
+
+On a bien le message "Hello World !" d'afficher via la vue.
 
 ### Le modèle
 
-Pour créer notre modèle qui và se charger de récupérer des données.
+Pour créer notre modèle qui và se charger de récupérer des données par la suite.
 
-On và donc écrire dans notre terminal :
+On và écrire dans notre terminal :
 
 `php artisan make:model Student`
 
@@ -207,9 +210,9 @@ On và donc écrire dans notre terminal :
 
 ![Le dossier des modèles](tpCours/resources/assets/img/model-folder.png)
 
-### Insérer des étudiants dans la BDD
+### Afficher des étudiants dans la BDD
 
-Nous allons maintenant Insérer des étudiants dans la base de données.
+Nous allons maintenant afficher les étudiants de la base de données.
 
 #### Modification du fichier route web.php
 
@@ -218,10 +221,94 @@ Pour se faire, on và se rendre à nouveau dans le fichier route **web.php** (da
 Puis on và créer une route qui appel un contrôleur comme ceci :
 
 ```php
-Route::get('/students', 'StudentsController@voir');
+Route::get('/students', 'StudentsController@afficher');
 ```
 
 #### Modification du contrôleur StudentsController
 
-On và maintenant de nouveau se rendre dans le contrôleur StudentsControlleur (fichier **StudentsController.php** dans *App/Http/Controllers*)
+On và maintenant de nouveau se rendre dans le contrôleur **StudentsControlleur**
 
+On và y ajouter :
+
+```php
+public function afficher()
+{
+    $students = App\Student::all();
+
+
+    return view('students', [
+        'students' => $students
+    ]);
+}
+```
+#### Ajout d'une nouvelle vue et d'un layout
+
+##### Le fichier layout.blade.php
+
+On và créer un fichier **layout** avec **blade** à savoir que blade est un peu l'équivalent de **twig** pour **Symfony**.
+Pour se faire on se dirige dans le dossier *resources/views* puis on ajoute un nouveau fichier qu'on và appeler **layout.blade.php**
+
+Dans se fichier on à une grande partie du code HTML que l'on utilise souvent !
+
+```php
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Laravel</title>
+    </head>
+    <body>
+        <div class="container">
+
+            @yield('contenu')
+        </div>
+    </body>
+</html>
+```
+Le `@yield('contenu')` permet de dire que le contenu sera affiché ici.
+
+##### Le fichier students.blade.php
+
+Nous allons créer une vue **students.blade.php** qui và nous permettre d'afficher nos étudiants.
+
+```php
+@extends('layout')
+
+@section('contenu')
+<h1>Liste des étudiants</h1>
+
+<ul>
+    @foreach($students as $student)
+        <li>{{ $student->firstname }} {{ $student->lastname }}</li>
+    @endforeach
+</ul>
+@endsection
+```
+
+Avec `@extends('layout')`, on a le fichier code HTML du fichier **layout.blade.php**. C'est un peu comme un `include();` en php.
+Ensuite dans `@section('contenu')` on a notre contenu qui est affiché.
+
+
+
+
+
+
+##### Modification du modèle Student
+
+Dans notre class Student, on và ajouter une ligne :
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Student extends Model
+{
+    protected $fillable = ['firstname', 'lastname'];
+}
+
+```
