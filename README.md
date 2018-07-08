@@ -210,7 +210,7 @@ On và écrire dans notre terminal :
 
 ![Le dossier des modèles](tpCours/resources/assets/img/model-folder.png)
 
-Maintenant qu'on a créer route, contrôleur et vue, on và pouvoir passer au CRUD !
+Maintenant qu'on a créer une route, un contrôleur et une vue, on và pouvoir passer au CRUD !
 
 ### Insérer des étudiants dans la BDD
 
@@ -295,6 +295,9 @@ class Student extends Model
 ```
 Cette ligne permet de dire à Laravel "Les champs firstname et lastname sont autorisés".
 
+On peut tester :smiley: http://localhost:8000/add-student
+Normalement tout devrait fonctionner :relieved: !
+
 ### Afficher des étudiants dans la BDD
 
 Nous allons maintenant afficher les étudiants de la base de données.
@@ -375,11 +378,3 @@ Nous allons créer une vue **students.blade.php** qui và nous permettre d'affic
 
 Avec `@extends('layout')`, on a le fichier code HTML du fichier **layout.blade.php**. C'est un peu comme un `include();` en php.
 Ensuite dans `@section('contenu')` on a notre contenu qui est affiché.
-
-
-
-
-
-
-
-
