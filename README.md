@@ -300,12 +300,6 @@ Ensuite dans `@section('contenu')` on a notre contenu qui est affiché.
 Dans notre class Student, on và ajouter une ligne :
 
 ```php
-<?php
-
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
 class Student extends Model
 {
     protected $fillable = ['firstname', 'lastname'];
