@@ -2,10 +2,6 @@
 
 Je vais vous présenter le Framework **Laravel**, l'un des framework les plus utilisés sur le marché.
 
-## Présentation générale
-
-Document word...
-
 ## Présentation de l'architecture MVC
 
 ![Schéma de l'architecture MVC](tpCours/resources/assets/img/mvc-schema.png)
@@ -32,9 +28,41 @@ Laravel est un framework web open-source écrit en PHP respectant le principe de
 *Vous dormiez ? :sleeping:*
 *Si c'est le cas vous pouvez vous réveiller !*
 
+### Installation de Composer
+
+https://getcomposer.org/download/ 
+
+Windows : 
+
+Télécharger  le composer-setup.exe et l’installer. 
+
+Linux : 
+
+En lignes de commandes : 
+
+```
+php -r "copy ('https://getcomposer.org/installer', 'composer-setup.php');" 
+
+php -r "if (hash_file ('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') {echo 'Installateur vérifié';} else {echo 'Installer corrupt'; unlink ('composer-setup. php ');} echo PHP_EOL; " 
+
+php composer-setup.php 
+
+php -r "unlink ('composer-setup.php');" 
+```
+Installation local : 
+
+Se diriger dans le répertoire souhaité puis effectuer la commande suivante : 
+
+`php composer.phar`
+
 ### Installation de Laravel
 
-A récupérer sur le document word...
+https://laravel.com/docs/5.6
+
+Effectuer la commande suivante pour installer Laravel via composer : 
+
+`composer create-project --prefer-dist laravel/laravel nom_du_projet`
+
 
 Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
 
