@@ -34,7 +34,7 @@ https://getcomposer.org/download/
 
 Windows : 
 
-Télécharger  le composer-setup.exe et l’installer. 
+Télécharger le composer-setup.exe et l’installer. 
 
 Linux : 
 
@@ -58,6 +58,16 @@ Se diriger dans le répertoire souhaité puis effectuer la commande suivante�
 ### Installation de Laravel
 
 https://laravel.com/docs/5.6
+
+Windows : 
+
+Effectuer la ligne de commande suivante pour DL Laravel via composer : 
+
+`composer global require "laravel/installer"` 
+
+Une fois installé,  la commande suivante permettra de créer une install Laravel dans le répertoire spécifié : 
+
+`laravel new nom_dossier`
 
 Effectuer la commande suivante pour installer Laravel via composer : 
 
