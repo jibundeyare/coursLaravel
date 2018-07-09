@@ -346,8 +346,8 @@ Maintenant on và devoir créer la vue **ajoutStudent** qui contiendra un formul
     <form action="/students" method="post">
         {{ csrf_field() }}
 
-        <input type="text" name="firstname" placeholder="Nom">
-        <input type="text" name="lastname" placeholder="Prénom">
+        <input type="text" name="lastname" placeholder="Nom">
+        <input type="text" name="firstname" placeholder="Prénom">
         <input type="submit" value="Ajout d'un étudiant">
     </form>
 @endsection
