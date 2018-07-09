@@ -49,6 +49,7 @@ php composer-setup.php
 
 php -r "unlink ('composer-setup.php');" 
 ```
+
 Installation local : 
 
 Se diriger dans le répertoire souhaité puis effectuer la commande suivante : 
@@ -59,7 +60,7 @@ Se diriger dans le répertoire souhaité puis effectuer la commande suivante�
 
 https://laravel.com/docs/5.6
 
-Windows : 
+### Windows : 
 
 Effectuer la ligne de commande suivante pour DL Laravel via composer : 
 
@@ -69,16 +70,19 @@ Une fois installé,  la commande suivante permettra de créer une install Lara
 
 `laravel new nom_dossier`
 
+### Linux :
+
 Effectuer la commande suivante pour installer Laravel via composer : 
 
 `composer create-project --prefer-dist laravel/laravel nom_du_projet`
 
+### Serveur web
 
 Une fois l'installation de Laravel terminée on và lancer le server avec cette commande :
 
 `php artisan serve`
 
-Si tout s'est bien passé, en vous rendant sur http://127.0.0.1:8000 vous devriez avoir cet affichage :
+Si tout s'est bien passé, en vous rendant sur `http://127.0.0.1:8000` vous devriez avoir cet affichage :
 
 ![Installation terminée](tpCours/resources/assets/img/laravel-accueil.png)
 
@@ -87,17 +91,16 @@ Si tout s'est bien passé, en vous rendant sur http://127.0.0.1:8000 vous devrie
 #### Créer la base de données
 
 Il faut se rendre sur phpMyAdmin et créer sa base de données.
-(où le faire en ligne de commande si vous préférez. :smirk:)
 
 Donnez lui le nom que vous voulez, moi je vais l'appeler "cours-laravel".
 
 #### Le fichier de configuration
 
-Pour que **Laravel** sache qu'elle base de données vous souhaitez utiliser et qu'il puisse s'y connecter, il faut ouvrir le fichier de configuration .env et le paramétrer.
+Pour que **Laravel** sache qu'elle base de données vous souhaitez utiliser et qu'il puisse s'y connecter, il faut ouvrir le fichier de configuration `.env` et le paramétrer.
 
 Ce fichier se trouve à la racine du projet.
 
-*Note: Le fichier ".env" est probablement un fichier caché.*
+*Note: Le fichier `.env` est probablement un fichier caché.*
 
 ```
 DB_CONNECTION=mysql
@@ -107,6 +110,7 @@ DB_DATABASE=cours-laravel
 DB_USERNAME=root
 DB_PASSWORD=motDePasse
 ```
+
 Le champ DB_DATABASE correspond au nom de votre base de données.
 Le champ DB_USERNAME correspond à votre identifiant.
 Le champ DB_PASSWORD correspond à votre mot de passe.
@@ -119,6 +123,8 @@ Nous allons maintenant créer une migration avec cette ligne de commande :
 
 *Note : `create_students_table` est le nom de ma table de migration, vous pouvez l'appeler comme vous le souhaitez.*
 
+Le fichier de migration est créé dans le dossier `database/migrations`.
+
 Une fois la migration créer, on và l'ouvrir dans le dossier **database** puis dans le dossier **migrations**
 
 ![Le dossier des migrations](tpCours/resources/assets/img/migrations-folder.png)
@@ -126,32 +132,35 @@ Une fois la migration créer, on và l'ouvrir dans le dossier **database** puis 
 Dans notre migration, on a une une fonction "up" :
 
 ```php
-    public function up()
-    {
-        Schema::create('students', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
-    }
+public function up()
+{
+    Schema::create('students', function (Blueprint $table) {
+        $table->increments('id');
+        $table->timestamps();
+    });
+}
 ```
 
 Il faut rajouter deux champs un champ *firstname* et un champ *lastname* comme ceci :
 
 ```php
-    public function up()
-    {
-        Schema::create('students', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->timestamps();
-        });
-    }
+public function up()
+{
+    Schema::create('students', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('firstname');
+        $table->string('lastname');
+        $table->timestamps();
+    });
+}
 ```
+
 On peut constater qu'on à déjà deux tables de migrations présentes. C'est Laravel qui nous les a implémenter à la construction du projet.
 Voici ces deux migrations :
-`create_users_table.php`
-`create_password_resets_table`
+
+- `create_users_table.php`
+- `create_password_resets_table`
+
 Comme nous n'en avons pas besoin dans ce petit tp, on và les supprimer.
 
 
@@ -165,19 +174,40 @@ Maintenant, pour pouvoir effectuer la migration on và taper cette ligne de comm
 
 Si on refait ici la commande `php artisan migrate:status` on voit bien que maintenant la migration a était effectuée (si il n'y a pas eu d'erreur lors de la commande précédente bien évidemment).
 
+### Erreur `SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes`
+
+Ouvrez le fichier `app/Providers/AppServiceProvider.php`, et modifier le bloc :
+
+```
+public function boot()
+{
+    //
+}
+```
+
+afin d'obtenir :
+
+```
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+```
+
 ### Les routes
 
 On se dirige dans le dossier des **routes**
 
 ![Le dossier routes](tpCours/resources/assets/img/routes-folder.png)
 
-On ouvre le fichier route **web.php**
+On ouvre le fichier route `routes/web.php`.
 
 Ecrivez la ligne
 
 ```php
 Route::get('/', 'MonController@accueil');
 ```
+
 Que fait cette ligne ? Elle và appeler le contrôleur **MonController** et la function **accueil** de ce contrôleur.
 
 Si on essaye d'accéder à l'adresse `http://127.0.0.1:8000/test`
@@ -192,11 +222,11 @@ On và écrire cette ligne afin de générer automatiquement le contrôleur.
 
 *Note : `MonController` est le nom du controller, vous pouvez l'appeler comme vous le souhaitez.*
 
-Les contrôleurs sont créer dans `app` -> `Http` -> `Controllers`
+Les contrôleurs sont créer dans le dossier `app/Http/Controllers`.
 
 ![Le dossier des contrôleurs](tpCours/resources/assets/img/controller-folder.png)
 
-On a bien nôtre nouveau contrôleur **monController.php** dans le dossier `Controllers`
+On a bien nôtre nouveau contrôleur `monController.php` dans le dossier `app/Http/Controllers`.
 
 On và maintenant créer la fonction accueil dans le contrôleur qui affichera `Hello World !` juste pour vérifier que le contrôleur fonctionne correctement.
 
@@ -210,7 +240,7 @@ public function accueil()
 Pour respecter l'architecture MVC, le contrôleur appel une vue. Nous allons donc appeler une vue depuis le contrôleur.
 La vue que l'on và appeler n'existe pas encore mais on và la créer juste après.
 
-On và remplacer `echo 'Hello World !';` par `return view('hello')';` dans notre fonction accueil du contrôleur **MonController**.
+On và remplacer `echo 'Hello World !';` par `return view('hello')';` dans notre fonction accueil du contrôleur `app/Http/Controllers/MonController`.
 
 ```php
 public function accueil()
@@ -218,11 +248,12 @@ public function accueil()
     return view('hello');
 }
 ```
-Ainsi on và retourner une la vue "Hello".
+
+Ainsi on và retourner la vue `hello` (qui devra être dans le fichier `resources/views/hello.blade.php`).
 
 ### La vue
 
-Pour créer la vue, il faut se rendre dans *resources/views* puis créer un fichier *hello.blade.php*.
+Pour créer la vue, il faut se rendre dans `resources/views` puis créer un fichier `hello.blade.php`.
 
 On và ensuite modifier cette vue et y écrire un petit peu de HTML.
 
@@ -241,8 +272,7 @@ On và ensuite modifier cette vue et y écrire un petit peu de HTML.
 </html>
 ```
 
-On peut tester à nouveau :
-http://127.0.0.1:8000
+On peut tester à nouveau : `http://127.0.0.1:8000`
 
 On a bien le message "Hello World !" d'afficher via la vue.
 
