@@ -554,6 +554,6 @@ Ensuite dans `@section('contenu')` on a notre contenu qui est affiché.
 
 Maintenant qu'on a une page qui permet d'afficher les données de notre BDD, on và effectuer une redirection sur notre ancienne fonction de traitement de données afin d'avoir une redirection la page de notre liste d'étudiants lorsqu'on vient d'ajouter un étudiant.
 
-Pour se faire, il suffit simplement de modifier le `return 'Formulaire validé';` en `return redirect('students');`
+Pour se faire, dans notre contrôleur **StudentsController** il suffit simplement de remplacer le `return 'Formulaire validé';` par `return redirect('students');`
 
 Prochainement... Mettre à jour des étudiants dans la BDD
