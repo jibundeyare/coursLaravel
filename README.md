@@ -359,6 +359,12 @@ Maintenant on và devoir créer la vue **ajoutStudent** qui contiendra un formul
 [Plus d'infos sur Wikipédia EN](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
 [Plus d'infos sur Wikipédia FR](https://fr.wikipedia.org/wiki/Cross-site_request_forgery)
 
+Maintenant si on vérifie http://127.0.0.1:8000/add-student on à bien un formulaire de deux champs avec un bouton.
+
+Le formulaire ne fonctionne pas encore pourquoi ? Parce qu'actuellement on a simplement fait "affiche se formulaire via la méthode GET".
+
+Pour traiter les données du formulaire, on và ajouter une route POST.
+
 #### Ajout d'une nouvelle route
 
 On và ajouter une nouvelle route qui và nous permettre d'utiliser une méthode POST pour le contrôleur afin de traiter les données envoyés via le formulaire.
@@ -520,7 +526,7 @@ On và y ajouter :
 ```php
 public function afficher()
 {
-    $students = App\Student::all();
+    $students = Student::all();
 
 
     return view('students', [
