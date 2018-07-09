@@ -153,6 +153,13 @@ On peut vérifier les status de nos migrations pour avoir une idée des migratio
 
 `php artisan migrate:status`
 
+On peut constater qu'on à déjà deux tables de migrations présentes. C'est Laravel qui nous les a implémenter à la construction du projet.
+Voici ces deux migrations :
+`create_users_table.php`
+`create_password_resets_table`
+Comme nous n'en avons pas besoin dans ce petit tp, on và les supprimer.
+
+
 Maintenant, pour pouvoir effectuer la migration on và taper cette ligne de commande :
 
 `php artisan migrate`
