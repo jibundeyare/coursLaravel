@@ -148,17 +148,16 @@ Il faut rajouter deux champs un champ *firstname* et un champ *lastname* comme c
         });
     }
 ```
-
-On peut vérifier les status de nos migrations pour avoir une idée des migrations que l'on a déjà effectuée ou non :
-
-`php artisan migrate:status`
-
 On peut constater qu'on à déjà deux tables de migrations présentes. C'est Laravel qui nous les a implémenter à la construction du projet.
 Voici ces deux migrations :
 `create_users_table.php`
 `create_password_resets_table`
 Comme nous n'en avons pas besoin dans ce petit tp, on và les supprimer.
 
+
+On peut vérifier les status de nos migrations pour avoir une idée des migrations que l'on a déjà effectuée ou non :
+
+`php artisan migrate:status`
 
 Maintenant, pour pouvoir effectuer la migration on và taper cette ligne de commande :
 
