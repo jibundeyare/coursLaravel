@@ -74,7 +74,11 @@ Effectuer la commande suivante pour installer Laravel via composer :
 `composer create-project --prefer-dist laravel/laravel nom_du_projet`
 
 
-Une fois l'installation de Laravel terminée si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
+Une fois l'installation de Laravel terminée on và lancer le server avec cette commande :
+
+`php artisan serve`
+
+Si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
 
 ![Installation terminée](tpCours/resources/assets/img/laravel-accueil.png)
 
@@ -212,7 +216,7 @@ Ainsi on và retourner une la vue "Hello".
 
 ### La vue
 
-Pour créer la vue, il faut se rendre dans *app/resources/views* puis créer un fichier *hello.blade.php*.
+Pour créer la vue, il faut se rendre dans *resources/views* puis créer un fichier *hello.blade.php*.
 
 On và ensuite modifier cette vue et y écrire un petit peu de HTML.
 
