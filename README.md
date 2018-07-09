@@ -308,6 +308,32 @@ class StudentsController extends Controller
     }
 ```
 
+#### Création d'une vue layout.blade.php
+
+On và créer un fichier **layout** avec **blade** à savoir que blade est un peu l'équivalent de **twig** pour **Symfony**.
+Pour se faire on se dirige dans le dossier *resources/views* puis on ajoute un nouveau fichier qu'on và appeler **layout.blade.php**
+
+Dans se fichier on à une grande partie du code HTML que l'on utilise souvent !
+
+```php
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Laravel</title>
+    </head>
+    <body>
+        <div class="container">
+
+            @yield('contenu')
+        </div>
+    </body>
+</html>
+```
+Le `@yield('contenu')` permet de dire que le contenu sera affiché ici.
+
 #### Création d'une vue ajoutStudent
 
 Maintenant on và devoir créer la vue **ajoutStudent** qui contiendra un formulaire afin d'ajouter un étudiant dans la base de données.
@@ -505,35 +531,7 @@ public function afficher()
 }
 ```
 
-#### Ajout d'une nouvelle vue et d'un layout
-
-##### Le fichier layout.blade.php
-
-On và créer un fichier **layout** avec **blade** à savoir que blade est un peu l'équivalent de **twig** pour **Symfony**.
-Pour se faire on se dirige dans le dossier *resources/views* puis on ajoute un nouveau fichier qu'on và appeler **layout.blade.php**
-
-Dans se fichier on à une grande partie du code HTML que l'on utilise souvent !
-
-```php
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
-    </head>
-    <body>
-        <div class="container">
-
-            @yield('contenu')
-        </div>
-    </body>
-</html>
-```
-Le `@yield('contenu')` permet de dire que le contenu sera affiché ici.
-
-##### Le fichier students.blade.php
+#### Ajout d'une nouvelle vue students
 
 Nous allons créer une vue **students.blade.php** qui và nous permettre d'afficher nos étudiants.
 
