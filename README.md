@@ -361,7 +361,7 @@ Cette ligne permet de dire à Laravel "Les champs firstname et lastname sont aut
 On peut tester :smiley: http://localhost:8000/add-student puis on vérifie dans la base de données.
 Normalement tout devrait fonctionner :relieved: !
 
-#### Amélioration du formulaire
+#### Amélioration du formulaire
 
 Tout fonctionne cependant, l'utilisateur và tomber sur une erreur si il n'entre pas de nom et de prénom.
 On và donc améliorer notre formulaire. Pour se faire, on và se rendre dans **StudentsController.php** puis dans la fonction traitementAjout() on và ajouter :
