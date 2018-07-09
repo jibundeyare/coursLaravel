@@ -78,7 +78,7 @@ Une fois l'installation de Laravel terminée on và lancer le server avec cette 
 
 `php artisan serve`
 
-Si tout s'est bien passé, en vous rendant sur http://localhost:8000 vous devriez avoir cet affichage :
+Si tout s'est bien passé, en vous rendant sur http://127.0.0.1:8000 vous devriez avoir cet affichage :
 
 ![Installation terminée](tpCours/resources/assets/img/laravel-accueil.png)
 
@@ -242,7 +242,7 @@ On và ensuite modifier cette vue et y écrire un petit peu de HTML.
 ```
 
 On peut tester à nouveau :
-http://localhost:8000
+http://127.0.0.1:8000
 
 On a bien le message "Hello World !" d'afficher via la vue.
 
@@ -394,7 +394,7 @@ class Student extends Model
 ```
 Cette ligne permet de dire à Laravel "Les champs firstname et lastname sont autorisés".
 
-On peut tester :smiley: http://localhost:8000/add-student puis on vérifie dans la base de données.
+On peut tester :smiley: http://127.0.0.1:8000/add-student puis on vérifie dans la base de données.
 Normalement tout devrait fonctionner :relieved: !
 
 #### Amélioration du formulaire
